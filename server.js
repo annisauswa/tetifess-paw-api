@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 })
 
 // cors origin
-const allowedOrigins = ['localhost', 'http://localhost:3000', 'postman-origin'];
+const allowedOrigins = ['localhost', 'postman-origin', 'tetifess-paw-api.vercel.app'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin)) {
