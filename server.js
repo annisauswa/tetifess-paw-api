@@ -19,13 +19,13 @@ app.use((req, res, next) => {
 })
 
 // cors origin
-const allowedOrigins = ['localhost', 'postman-origin'];
+const allowedOrigins = ['localhost', 'http://localhost:3000', 'postman-origin'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(null, true);
+      callback(new Error("Origin not allowed by CORS"));
     }
   },
   credentials: true,
