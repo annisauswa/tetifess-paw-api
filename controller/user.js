@@ -48,18 +48,12 @@ const loginUser = async (req, res) => {
         }
 
         const accessToken = jwt.sign({id: user._id, role: user.role}, process.env.JWT_SECRET)
-
-        res.status(200)
-            .cookie(
-                'token', accessToken, {
-                    httpOnly: true,
-                    secure: true
-                })
-            .json({
-                message: 'Login success',
-                token: accessToken,
-                user
-            })
+        
+        res.status(200).json({
+            message: 'Login success',
+            token: accessToken,
+            user
+        })
     } catch(err){
         res.status(400).json({ error: err.message })
     }
