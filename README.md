@@ -1,4 +1,4 @@
-# tetifess
+# tetifess API
 <div align="center">
   <img src="https://github.com/annisauswa/tetifess-paw/assets/24343313/4c16b078-27bd-4bfd-91ff-47d0e24d6e8e" alt="tetifess" width="40%">
   <p>API Documentation of tetifess, a platform designed for DTETI community to confess and share their thoughts anonymously</p>
