@@ -88,10 +88,10 @@ const readUserPosting = async (req, res) => {
             .populate({path:'userId', select:'_id username name'})
             .populate({path:'likes', select:'_id username',  model: User})
         if(getPostsByUser.length === 0){
-            res.status(404).json({ message: 'No posts found by user' });
+            res.status(200).json({ message: 'No posts by user yet' });
         }
         else{
-            res.json(getPostsByUser);
+            res.status(200).json(getPostsByUser);
         }
 
     }
