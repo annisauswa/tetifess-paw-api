@@ -106,7 +106,7 @@ const getProfile = async (req, res) => {
 
     try{
         const users = await User.findById(userId)
-            .populate({path:'likedPostings', select:'_id userId text', model: Posting, populate: {path: 'userId', select: 'username'}})
+            .populate({path:'likedPostings', model: Posting, populate: {path: 'userId', select: 'username name'}})
             
         if (!users){
             return res.status(404).json({ message: 'User not found' })
@@ -124,7 +124,7 @@ const getOtherUser = async (req, res) => {
         if (userId){
             const users = await User.findById(userId)
                 .select('username name bio dateCreated')
-                .populate({path:'likedPostings', select:'userId text', model: Posting, populate: {path: 'userId', select: 'username'}})
+                .populate({path:'likedPostings', model: Posting, populate: {path: 'userId', select: 'username name'}})
             
             if (!users){
                 return res.status(404).json({ message: 'User not found' })
