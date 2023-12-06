@@ -74,6 +74,33 @@ const logoutUser = async (req, res) => {
     }
 }
 
+const readUserPosting = async (req, res) => {
+    const userId = req.user.id;
+    const {ascending} = req.query;
+    try{
+        let sortDirection = 'desc';
+
+        if (ascending === 'true') {
+            sortDirection = 'asc';
+        }
+        const getPostsByUser = await Posting.find({userId: userId})
+            .sort({timestamp: sortDirection})
+            .populate({path:'userId', select:'_id username name'})
+            .populate({path:'likes', select:'_id username',  model: User})
+        if(getPostsByUser.length === 0){
+            res.status(404).json({ message: 'No posts found by user' });
+        }
+        else{
+            res.json(getPostsByUser);
+        }
+
+    }
+    catch(err){
+        res.json({err})
+        res.status(500).json({ message: 'Internal server error' })
+    }
+}
+
 const getProfile = async (req, res) => {
     const userId = req.user.id
 
@@ -205,5 +232,6 @@ module.exports = {
     loginUser,
     logoutUser,
     getProfile,
-    searchUser
+    searchUser,
+    readUserPosting
 }

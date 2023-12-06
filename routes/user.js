@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { registerUser, getOtherUser, updateUser, getProfile, deleteUser, deleteLoggedInUser, loginUser, logoutUser, searchUser } = require("../controller/user")
+const { registerUser, getOtherUser, updateUser, getProfile, deleteUser, deleteLoggedInUser, loginUser, logoutUser, searchUser, readUserPosting } = require("../controller/user")
 const { verifyToken, verifyAdmin } = require('../middleware/auth')
 
 // PUBLIC ROLE
@@ -25,6 +25,8 @@ router.post('/login', loginUser)
 // BODY     : None
 // RESPONSE : Success message or error message
 router.post('/logout', logoutUser)
+
+router.get('/posting', verifyToken, readUserPosting)
 
 // DESC     : Get the profile information for the currently authenticated user
 // ROUTE    : GET "/user/profile"
