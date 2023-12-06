@@ -75,7 +75,7 @@ const logoutUser = async (req, res) => {
 }
 
 const readUserPosting = async (req, res) => {
-    const userId = req.user.id;
+    const userId = req.params.userId;
     const {ascending} = req.query;
     try{
         let sortDirection = 'desc';

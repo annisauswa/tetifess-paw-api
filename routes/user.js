@@ -26,7 +26,7 @@ router.post('/login', loginUser)
 // RESPONSE : Success message or error message
 router.post('/logout', logoutUser)
 
-router.get('/posting', verifyToken, readUserPosting)
+router.get('/posting/:userId', verifyToken, readUserPosting)
 
 // DESC     : Get the profile information for the currently authenticated user
 // ROUTE    : GET "/user/profile"
