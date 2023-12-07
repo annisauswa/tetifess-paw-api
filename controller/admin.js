@@ -181,6 +181,7 @@ const getUsers = async (req, res) => {
                 $project: {
                     "_id": 1,
                     "userDetails._id": 1,
+                    "userDetails.role": 1,
                     "userDetails.username": 1,
                     "userDetails.name": 1,
                     "userDetails.bio": 1,

@@ -38,6 +38,7 @@ const loginUser = async (req, res) => {
 
     try{
         const user = await User.findOne({username})
+            .populate({path:'likedPostings', model: Posting})
 
         if(!user){
             return res.status(404).json({error: 'User not found'})
